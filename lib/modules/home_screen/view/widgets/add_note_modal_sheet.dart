@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/core/components/app_button.dart';
 import 'package:notes_app/core/components/app_textfield.dart';
 import 'package:notes_app/core/utils/app_constants.dart';
+import 'package:notes_app/core/utils/app_sevice_locator.dart';
 import 'package:notes_app/modules/home_screen/controller/home_cubit.dart';
 
 class AddNoteModalSheet extends StatelessWidget {
@@ -12,7 +13,7 @@ class AddNoteModalSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final controller = HomeCubit.get();
+        final controller = servicesLocator<HomeCubit>();
         return SizedBox(
           width: AppConstants.width,
           child: Form(
@@ -29,7 +30,7 @@ class AddNoteModalSheet extends StatelessWidget {
                   ),
                   AppTextField(
                     controller: controller.contentController,
-                    maxlines: 3,
+                    maxlines: 5,
                     hint: "Content",
                   ),
                   const SizedBox(

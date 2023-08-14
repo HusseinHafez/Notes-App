@@ -17,6 +17,7 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
       maxLines: maxlines,
       controller: controller,
       onChanged: onChanged,
@@ -39,6 +40,7 @@ class AppTextField extends StatelessWidget {
         hintStyle: TextStyle(
           color: Colors.cyan.withOpacity(.7),
           fontWeight: FontWeight.w500,
+          
         ),
       ),
     );
