@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notes_app/core/utils/app_sevice_locator.dart';
+import 'package:notes_app/modules/home_screen/controller/home_cubit.dart';
 import 'package:notes_app/modules/home_screen/view/home_screen.dart';
 import 'package:notes_app/providers/notes_controller/notes_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +14,10 @@ class NotesApp extends StatelessWidget {
     return  MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => NotesCubit(),
+          create: (context) => servicesLocator<NotesCubit>(),
+        ),
+          BlocProvider(
+          create: (context) => servicesLocator<HomeCubit>(),
         )
       ],
       child: BlocBuilder<NotesCubit, NotesState>(
