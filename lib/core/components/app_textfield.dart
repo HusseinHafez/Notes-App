@@ -6,20 +6,28 @@ class AppTextField extends StatelessWidget {
   final String? hint;
   final TextEditingController controller;
   final Function(String)? onChanged;
+  final AutovalidateMode? autovalidateMode;
   const AppTextField({
     Key? key,
     this.maxlines,
     this.hint,
     required this.controller,
     this.onChanged,
+    this.autovalidateMode
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
       maxLines: maxlines,
       controller: controller,
+      autovalidateMode: autovalidateMode,
+      validator: (value) {
+        if (value?.isEmpty ?? true) {
+          return 'enter some thing';
+        }
+        return null;
+      },
       onChanged: onChanged,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -40,7 +48,6 @@ class AppTextField extends StatelessWidget {
         hintStyle: TextStyle(
           color: Colors.cyan.withOpacity(.7),
           fontWeight: FontWeight.w500,
-          
         ),
       ),
     );

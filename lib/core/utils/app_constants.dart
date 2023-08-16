@@ -5,4 +5,6 @@ class AppConstants{
 
   static double width=MediaQuery.of(NotesCubit.navigatorKey.currentContext!).size.width;
   static double height=MediaQuery.of(NotesCubit.navigatorKey.currentContext!).size.height;
+  static String noteBOx='notes_box';
+  static String todoBox='todo_box';
 }

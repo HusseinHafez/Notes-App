@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/core/components/app_button.dart';
-import 'package:notes_app/core/components/app_textfield.dart';
-import 'package:notes_app/core/utils/app_constants.dart';
-import 'package:notes_app/core/utils/app_sevice_locator.dart';
-import 'package:notes_app/modules/home_screen/controller/home_cubit.dart';
+import 'package:notes_app/modules/todo_screen/controller/todo_cubit.dart';
 
-class AddNoteModalSheet extends StatelessWidget {
-  const AddNoteModalSheet({super.key});
+import '../../../../core/components/app_button.dart';
+import '../../../../core/components/app_textfield.dart';
+import '../../../../core/utils/app_constants.dart';
+import '../../../../core/utils/app_sevice_locator.dart';
+
+class AddTodoModalSheet extends StatelessWidget {
+  const AddTodoModalSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+   return  BlocBuilder<TodoCubit, TodoState>(
       builder: (context, state) {
-        final controller = servicesLocator<HomeCubit>();
+        final controller = servicesLocator<TodoCubit>();
         return SizedBox(
           width: AppConstants.width,
           child: Form(
@@ -27,22 +28,15 @@ class AddNoteModalSheet extends StatelessWidget {
                     autovalidateMode: controller.autovalidateMode,
                     hint: "Title",
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  AppTextField(
-                    controller: controller.contentController,
-                    autovalidateMode: controller.autovalidateMode,
-                    maxlines: 5,
-                    hint: "Content",
-                  ),
+                 
+                 
                   const SizedBox(
                     height: 100,
                   ),
                   AppButton(
-                    text: 'Add Note',
+                    text: 'Add Todo',
                     onPressed: () {
-                      controller.addNotes();
+                      controller.addTodo();
                     },
                     backgroundColor: Colors.cyan.shade900,
                   ),

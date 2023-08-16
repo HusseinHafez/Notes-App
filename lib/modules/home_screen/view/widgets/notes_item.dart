@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,6 +7,7 @@ import 'package:intl/intl.dart';
 class NotesItem extends StatelessWidget {
  final String title;
  final  String content;
+ final int color;
  final  VoidCallback onPressed;
  final  VoidCallback onTap;
 
@@ -13,8 +15,9 @@ class NotesItem extends StatelessWidget {
     Key? key,
     required this.title,
     required this.content,
+    required this.color,
     required this.onPressed,
-     required this.onTap,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -24,7 +27,7 @@ class NotesItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.deepPurpleAccent,
+          color:Colors.primaries[color],
         ),
         padding: const EdgeInsets.all(20),
         margin: const EdgeInsets.symmetric(vertical: 6),
@@ -57,7 +60,7 @@ class NotesItem extends StatelessWidget {
                   color: Colors.black,
                   size: 22,
                 ),
-                onPressed: () {},
+                onPressed: onPressed,
               ),
             ),
             Row(
